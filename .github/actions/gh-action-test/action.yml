@@ -32,8 +32,8 @@ runs:
     # setup docker
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
-      
+
     - name: launch docker image"
-      run: docker run --rm -ti sgaunet/gh-action-test:latest
+      run: docker run --rm sgaunet/gh-action-test:latest
       shell: bash
 
