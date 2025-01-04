@@ -2,6 +2,10 @@ name: Use Random Number Action
 on:
   push:
     branches: [main]
+
+permissions:
+  contents: write
+
 jobs:
   generate-number:
     runs-on: ubuntu-latest
