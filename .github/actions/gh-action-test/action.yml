@@ -29,7 +29,11 @@ runs:
       env:
         GITHUB_ACTION_PATH: ${{ github.action_path }}
 
-    # - name: Run goodbye.sh
-    #   run: goodbye.sh
-    #   shell: bash
+    # setup docker
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+      
+    - name: launch docker image"
+      run: docker run --rm -ti sgaunet/gh-action-test:latest
+      shell: bash
 
