@@ -1,0 +1,14 @@
+name: Use Random Number Action
+on:
+  push:
+    branches: [main]
+jobs:
+  generate-number:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Random Number
+        id: set-random-number
+        uses: ./.github/actions/gh-action-test
+      - name: Display Random Number
+        run: |
+            echo "Random Number: ${{ steps.set-random-number.outputs.random-number }}"
