@@ -6,13 +6,13 @@ content="README.md content"
 
 echo "$content" > "$tmpdir/$destination"
 
-export GH_TOKEN=$GITHUB_TOKEN
+# git config --global user.email "you@example.com"
+# git config --global user.name "Your Name"
+git config --global user.name "${GITHUB_ACTOR}"
+git config --global user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
 
-git config --global user.email "you@example.com"
-git config --global user.name "Your Name"
-
-gh repo clone sgaunet/gh-action-test.wiki
-cd gh-action-test.wiki
+git clone "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+cd "$(basename ${GITHUB_REPOSITORY})" || exit 1
 echo "voila dfkhjdfkgh" > README.md
 
 wget https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/1200px-Firefox_logo%2C_2019.svg.png -O firefox.png
