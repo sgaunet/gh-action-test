@@ -1,10 +1,10 @@
-# Container image that runs your code
-FROM alpine:3.20
+FROM sgaunet/gobadger:0.3.1 AS gobadger
+
+FROM alpine:3.21.0
 
 RUN apk add --no-cache bash curl jq git
+COPY --from=gobadger /usr/bin/gobadger /usr/bin/gobadger
 
-# Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
 
-# Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]
