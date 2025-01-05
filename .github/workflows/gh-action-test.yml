@@ -25,3 +25,11 @@ jobs:
           badge-filename: "coverage-badge.svg"
           badge-value: "${COVERAGE_VALUE}"
 
+      - name: Get Random Number 2
+        id: set-random-number2
+        uses: ./.github/actions/gh-action-test
+        with:
+          limit-coverage: "90"
+          badge-label: "coverage"
+          badge-filename: "coverage-badge2.svg"
+          badge-value: "${COVERAGE_VALUE}"

@@ -12,11 +12,11 @@ inputs:
   color-under-limit:
     description: 'Color under limit'
     required: false
-    default: "#ff0000"
+    default: "#e32323"
   color-over-limit:
     description: 'Color over limit'
     required: false
-    default: "#00ff00"
+    default: "#2db21b"
   badge-label:
     description: 'Badge label'
     required: false
