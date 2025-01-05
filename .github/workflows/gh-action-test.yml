@@ -13,8 +13,8 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: coverage
-        run: |
-            echo "coverage-value=80" >> $GITHUB_OUTPUT
+        id: coverage
+        run: echo "COVERAGE_VALUE=80" >> $GITHUB_ENV
 
       - name: Get Random Number
         id: set-random-number
@@ -23,5 +23,5 @@ jobs:
           limit-coverage: "80"
           badge-label: "coverage"
           badge-filename: "coverage-badge.svg"
-          badge-value: "${{ steps.coverage.outputs.coverage-value }}"
+          badge-value: "${COVERAGE_VALUE}"
 
