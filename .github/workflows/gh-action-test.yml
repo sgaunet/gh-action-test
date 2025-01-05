@@ -12,17 +12,16 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: debug
+      - name: coverage
         run: |
-            pwd
-            ls -la
-            echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
-            echo "GITHUB_ACTION_PATH: $GITHUB_ACTION_PATH"
-            echo "GITHUB_PATH: $GITHUB_PATH"
-            find . -type f
+            echo "coverage-value=80" >> $GITHUB_OUTPUT
+
       - name: Get Random Number
         id: set-random-number
         uses: ./.github/actions/gh-action-test
-      - name: Display Random Number
-        run: |
-            echo "Random Number: ${{ steps.set-random-number.outputs.random-number }}"
+        with:
+          limit-coverage: "80"
+          badge-label: "coverage"
+          badge-filename: "coverage-badge.svg"
+          badge-value: "${{ steps.coverage.outputs.coverage-value }}"
+
