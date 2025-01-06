@@ -1,20 +1,16 @@
-name: 'Hello World'
-description: 'Greet someone'
+name: 'coverage badge'
+description: 'Generate a badge for coverage'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
-    required: true
-    default: 'World'
   limit-coverage:
-    description: 'Lower of coverage'
+    description: 'Limit coverage'
     required: false
     default: "0"
   color-under-limit:
-    description: 'Color under limit'
+    description: 'Color under limit (red by default)'
     required: false
     default: "#e32323"
   color-over-limit:
-    description: 'Color over limit'
+    description: 'Color over limit (green by default)'
     required: false
     default: "#2db21b"
   badge-label:
@@ -30,24 +26,13 @@ inputs:
     required: true
 
 outputs:
-  random-number:
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-number }}
+  badge-url:
+    description: "URL of the badge"
+    value: ${{ steps.badge-url.outputs.badge-url }}
 
 runs:
   using: "composite"
   steps:
-    - name: Set Greeting
-      run: echo "Hello $INPUT_WHO_TO_GREET."
-      shell: bash
-      env:
-        INPUT_WHO_TO_GREET: ${{ inputs.who-to-greet }}
-
-    - name: Random Number Generator
-      id: random-number-generator
-      run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
-      shell: bash
-
     - name: Set GitHub Path
       run: echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
       shell: bash
@@ -73,3 +58,7 @@ runs:
         sgaunet/gh-action-test:latest
       shell: bash
 
+    - name: url of the badge
+      id: badge-url
+      run: echo "badge-url=$(echo https://raw.githubusercontent.com/wiki/${GITHUB_REPOSITORY}/${{ inputs.badge-filename }})" >> $GITHUB_OUTPUT
+      shell: bash
