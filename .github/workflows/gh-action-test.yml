@@ -1,4 +1,4 @@
-name: Use Random Number Action
+name: Generate coverage badges
 on:
   push:
     branches: [main]
