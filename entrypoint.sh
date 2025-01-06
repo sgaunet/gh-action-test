@@ -10,9 +10,9 @@ cd "$(basename ${GITHUB_REPOSITORY})" || exit 1
 
 # Generate the badge
 if (( BADGE_VALUE < LIMIT_COVERAGE )); then
-  export color=${COLOR_UNDER_LIMIT}
+  export color=${BADGE_COLOR_UNDER_LIMIT}
 else
-  export color=${COLOR_OVER_LIMIT}
+  export color=${BADGE_COLOR_OVER_LIMIT}
 fi
 
 set -x 
