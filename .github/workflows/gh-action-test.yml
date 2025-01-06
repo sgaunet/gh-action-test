@@ -7,7 +7,7 @@ permissions:
   contents: write
 
 jobs:
-  generate-number:
+  generate-badges:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
